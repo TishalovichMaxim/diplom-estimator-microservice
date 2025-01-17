@@ -23,12 +23,20 @@ repositories {
 	mavenCentral()
 }
 
+val jacksonVersion = "2.15.2"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.kafka:spring-kafka")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+	implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+	implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
 }
 
 tasks.withType<Test> {

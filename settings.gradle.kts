@@ -1,1 +1,1 @@
-rootProject.name = "SolutionEstimator"
+rootProject.name = "solution-estimator"

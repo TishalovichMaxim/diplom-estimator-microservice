@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: SolutionEstimator
+  kafka:
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "by.tishalovichm.*"
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: by.tishalovichm.solutionestimator.model.ReqEstimationInfo
+
+logging:
+  level:
+    by.tishalovichm: DEBUG
+
+python-interpreter: python
+file-name: solution
+file-extension: py
