@@ -1,8 +1,10 @@
-package by.tishalovichm.solutionestimator.service;
+package by.tishalovichm.solutionestimator.services;
 
-import by.tishalovichm.solutionestimator.model.EstimationStatus;
-import by.tishalovichm.solutionestimator.model.ReqEstimationInfo;
-import by.tishalovichm.solutionestimator.model.RespEstimationInfo;
+import by.tishalovichm.solutionestimator.dal.EstimationDao;
+import by.tishalovichm.solutionestimator.dal.SolutionDao;
+import by.tishalovichm.solutionestimator.entities.EstimationResult;
+import by.tishalovichm.solutionestimator.dto.req.ReqEstimationInfo;
+import by.tishalovichm.solutionestimator.dto.resp.RespEstimationInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -15,20 +17,22 @@ import java.nio.file.Path;
 @Setter
 @Service
 @RequiredArgsConstructor
-public class SolutionEstimationService {
+public class TestsRunnerService {
 
-    private static final Logger logger = LoggerFactory.getLogger(SolutionEstimationService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestsRunnerService.class);
 
     private final LanguageManager languageManager;
 
+    private final SolutionDao solutionDao;
+
+    private final EstimationDao estimationDao;
+
     private RespEstimationInfo getResp(
-            ReqEstimationInfo info,
-            EstimationStatus status
+            Long estimationResId
     ) {
+
         return new RespEstimationInfo(
-                info.userId(),
-                info.problemId(),
-                status,
+                estimationResId,
                 ""
         );
     }
@@ -41,7 +45,7 @@ public class SolutionEstimationService {
             path = languageManager.deployCode(info.code());
         } catch (IOException e) {
             logger.debug("Error in code deploying: {}", e.getMessage());
-            return getResp(info, EstimationStatus.INTERNAL_ERROR);
+            return getResp(EstimationResult.SERVER_ERROR);
         }
 
         logger.debug("Path of code deploying: {}", path);
@@ -54,18 +58,18 @@ public class SolutionEstimationService {
                 testOut = languageManager.execute(path, test.getInput());
             } catch (Exception e) {
                 logger.debug("Error in code execution on test: {}", i);
-                return getResp(info, EstimationStatus.INTERNAL_ERROR);
+                return getResp(EstimationResult.SERVER_ERROR);
             }
 
             testOut = testOut.replace("\\s", "");
             if (!test.getOutput().equals(testOut)) {
                 logger.debug("Wrong result on test #{}", i);
-                return getResp(info, EstimationStatus.WRONG_RESULT);
+                return getResp(EstimationResult.SERVER_ERROR);
             }
         }
 
         logger.debug("All tests succeeded");
-        return getResp(info, EstimationStatus.SUCCESS);
+        return getResp(EstimationResult.ACCEPTED);
     }
 
 }

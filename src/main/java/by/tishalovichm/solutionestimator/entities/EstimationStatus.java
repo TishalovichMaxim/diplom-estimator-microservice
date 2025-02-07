@@ -1,4 +1,4 @@
-package by.tishalovichm.solutionestimator.model;
+package by.tishalovichm.solutionestimator.entities;
 
 public enum EstimationStatus {
     SUCCESS,

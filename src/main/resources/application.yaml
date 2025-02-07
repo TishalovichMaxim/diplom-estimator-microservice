@@ -1,6 +1,15 @@
 spring:
   application:
     name: SolutionEstimator
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/diplom"
+    username: "postgres"
+    password: "password"
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
 logging:
   level:
