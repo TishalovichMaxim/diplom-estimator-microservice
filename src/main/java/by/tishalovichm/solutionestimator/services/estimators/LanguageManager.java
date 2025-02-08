@@ -1,4 +1,4 @@
-package by.tishalovichm.solutionestimator.services;
+package by.tishalovichm.solutionestimator.services.estimators;
 
 import java.io.IOException;
 import java.nio.file.Path;

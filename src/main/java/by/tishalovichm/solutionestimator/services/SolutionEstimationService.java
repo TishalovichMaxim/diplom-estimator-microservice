@@ -5,11 +5,12 @@ import by.tishalovichm.solutionestimator.dal.EstimationResultDao;
 import by.tishalovichm.solutionestimator.dal.ProblemTestDao;
 import by.tishalovichm.solutionestimator.dal.SolutionDao;
 import by.tishalovichm.solutionestimator.entities.ProblemTest;
-import by.tishalovichm.solutionestimator.dto.req.ReqEstimationInfo;
-import by.tishalovichm.solutionestimator.dto.resp.RespEstimationInfo;
+import by.tishalovichm.solutionestimator.dtos.req.ReqEstimationInfo;
+import by.tishalovichm.solutionestimator.dtos.resp.RespEstimationInfo;
 import by.tishalovichm.solutionestimator.entities.Estimation;
 import by.tishalovichm.solutionestimator.entities.EstimationResult;
 import by.tishalovichm.solutionestimator.entities.Solution;
+import by.tishalovichm.solutionestimator.services.estimators.TestsRunnerService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class SubmissionService {
+public class SolutionEstimationService {
 
     private final SolutionDao solutionDao;
 
@@ -32,9 +33,9 @@ public class SubmissionService {
 
     private final ProblemTestDao problemTestDao;
 
-    private static final Logger logger = LoggerFactory.getLogger(SubmissionService.class);
+    private static final Logger logger = LoggerFactory.getLogger(SolutionEstimationService.class);
 
-    private Solution saveSubmission(
+    private Solution saveSolution(
             Solution solution
     ) throws Exception {
 
@@ -98,7 +99,7 @@ public class SubmissionService {
     public void processSubmission(
             Solution solution
     ) {
-        Solution savedSolution = saveSubmission(solution);
+        Solution savedSolution = saveSolution(solution);
 
         List<ProblemTest> tests = getProblemTests(solution.getProblemId());
 

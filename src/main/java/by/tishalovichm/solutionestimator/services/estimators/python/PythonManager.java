@@ -1,5 +1,6 @@
-package by.tishalovichm.solutionestimator.services;
+package by.tishalovichm.solutionestimator.services.estimators.python;
 
+import by.tishalovichm.solutionestimator.services.estimators.LanguageManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

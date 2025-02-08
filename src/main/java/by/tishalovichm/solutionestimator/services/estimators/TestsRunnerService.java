@@ -1,10 +1,10 @@
-package by.tishalovichm.solutionestimator.services;
+package by.tishalovichm.solutionestimator.services.estimators;
 
 import by.tishalovichm.solutionestimator.dal.EstimationDao;
 import by.tishalovichm.solutionestimator.dal.SolutionDao;
 import by.tishalovichm.solutionestimator.entities.EstimationResult;
-import by.tishalovichm.solutionestimator.dto.req.ReqEstimationInfo;
-import by.tishalovichm.solutionestimator.dto.resp.RespEstimationInfo;
+import by.tishalovichm.solutionestimator.dtos.req.ReqEstimationInfo;
+import by.tishalovichm.solutionestimator.dtos.resp.RespEstimationInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.slf4j.Logger;

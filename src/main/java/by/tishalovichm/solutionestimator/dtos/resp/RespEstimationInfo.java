@@ -1,4 +1,4 @@
-package by.tishalovichm.solutionestimator.dto.resp;
+package by.tishalovichm.solutionestimator.dtos.resp;
 
 public record RespEstimationInfo (
     Long estimationResId,

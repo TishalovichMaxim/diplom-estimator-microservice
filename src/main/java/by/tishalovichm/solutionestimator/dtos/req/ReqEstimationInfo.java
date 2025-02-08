@@ -1,4 +1,4 @@
-package by.tishalovichm.solutionestimator.dto.req;
+package by.tishalovichm.solutionestimator.dtos.req;
 
 import by.tishalovichm.solutionestimator.entities.ProblemTest;
 

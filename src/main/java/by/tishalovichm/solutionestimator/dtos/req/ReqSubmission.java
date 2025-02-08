@@ -1,4 +1,4 @@
-package by.tishalovichm.solutionestimator.dto.req;
+package by.tishalovichm.solutionestimator.dtos.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReqSolution {
+public class ReqSubmission {
 
     private Long userId;
 
